@@ -78,26 +78,19 @@ export default PropsTestChildComponent;
 
 위 화면은 다음과 같다.
 
-![CPT2212091439-450x289.gif](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/CPT2212091439-450x289.gif)
+![1.gif](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/1.gif)
 
 위처럼 버튼을 눌러 보면, child 컴포넌트는 렌더링되지 않는다. 만약 child 컴포넌트가 props의 교체를 관찰하고 있었다면, text와 num 버튼을 눌러 값이 교체됐을 때 렌더링이 이루어져야 할 것이다. 
-
-![Untitled](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/Untitled.png)
-
 콘솔창에 나타나는 값은 다음과 같다.
 
-![Untitled](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/Untitled%201.png)
+![2.png](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/2.png)
 
 **child가 props로 가지고 있던 값은 바뀌지 않는다.** 이는 child를 재렌더링해도 마찬가지이다.
 
-![Untitled](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/Untitled.gif)
-
-![Untitled](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/Untitled%202.png)
-
-그러나 parent를 렌더링해 주면 child가 props가 교체된 대로 렌더링이 이루어진다.
-
-![CPT2212121410-450x289.gif](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/CPT2212121410-450x289.gif)
-
+![Untitled](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/3.gif)
+![Untitled](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/4.PNG)  
+그러나 parent를 렌더링해 주면 child가 props가 교체된 대로 렌더링이 이루어진다.  
+![Untitled](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/5.gif)  
 즉, 일반적으로 리액트는 **props의 교체를 신경 쓰고 있지 않다. 정확히는 props가 immutable하기 때문에 이를 변경하는 것은 불가능하고, parent가 렌더링될 때 child에게 넘겨주는 props가 비로소 교체된다.** props변화를 따라 렌더링이 안되는 것은 이러한 이유이다.  다만 `obj`의 값이 바뀐 것은 child가 `obj`를 참조하고만 있기 때문이다.
 
 흔히들 props가 변화하면 컴포넌트가 재렌더링된다고 말하지만, 개인적인 생각으로는 props**변화가 렌더링을 일으키는 것이 아니라,** **부모의 렌더링이 이루어질 때 (부모 함수 컴포넌트를 호출하면서) 비로소 자식 컴포넌트의** props**가 교체되고 이에 맞게 자식의 렌더링이 이루어지는 것**이다. 물론 이 때 props의 변화가 없더라도 렌더링은 이루어진다.
@@ -285,7 +278,7 @@ const MemoizationTestParentComponent = () => {
 
 해당 컴포넌트는 다음과 같다.
 
-![CPT2212140925-564x332.gif](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/CPT2212140925-564x332.gif)
+![CPT2212140925-564x332.gif](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/6.gif)  
 
 위 화면에서 윤곽선이 깜빡이는 것은 렌더링이 이루어졌음을 의미한다. 원래대로라면 parent+버튼을 눌러서 `parentCounter` state가 교체되면 부모 컴포넌트인 `<MemoizationTestParentComponent/>`가 렌더링되면서 그 자식인 `<MemoizedComponent/>` 가 렌더링되어야 했지만, props인 `fixed`와 `childCounter`가 변하지 않았기에 자식 컴포넌트는 렌더링되지 않았고, child+버튼을 눌러 `childCounter` prop이 바뀌었을 때만 렌더링되었다.
 
@@ -311,7 +304,7 @@ const MemoizedComponentWithDiffFn = memo(({ fixed, childCounter }: Props) => {
 
 이러면 props중 `fixed`항목이 변하지 않는 이상 렌더링되지 않는다.
 
-![CPT2212140924-611x389.gif](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/CPT2212140924-611x389.gif)
+![CPT2212140924-611x389.gif](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/7.gif)
 
 하지만 위 함수를 남용하는 것은 버그를 야기할 수 있다. 리액트에서도 `arePropsEqual`함수는 **최적화만을 위한 것**이므로, **렌더링을 방지하고자 사용하지 말라**고 [경고](https://reactjs.org/docs/react-api.html#reactmemo)한 바 있다. 게다가 컴포넌트마다 비교 함수를 넣는 것은 버그를 유발함은 물론이고 DX를 저해함과 동시에 유지보수를 힘들게 만든다.
 
@@ -446,7 +439,7 @@ const NoAnswerRenderingComponent = () => {
 
 이 컴포넌트의 input에는 입력 지연이 생긴다. (좋은 컴퓨터라면 안 생길 수도 있다...)
 
-![CPT2212190950-487x742.gif](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/CPT2212190950-487x742.gif)
+![CPT2212190950-487x742.gif](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/8.gif)
 
 여기에 useTransition을 사용하면 다음과 같이 입력 지연이 사라진다.
 
@@ -469,7 +462,7 @@ export const NoAnswerRenderingComponent = () => {
 
 isPending은 transition이 이루어지고 있음을 알려주는 `boolean`값이다.
 
-![CPT2212191002-483x757.gif](%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%85%E1%85%A6%E1%86%AB%E1%84%83%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%203ed689d31d9b437589f8c0fd9c3cca4a/CPT2212191002-483x757.gif)
+![CPT2212191002-483x757.gif](https://github.com/osoniee/studies/blob/main/react/react_rendering_and_optimization/9.gif)
 
 [useDeferredValue](https://reactjs.org/docs/hooks-reference.html#usedeferredvalue)를 사용할 수도 있다.
 
